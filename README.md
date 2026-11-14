@@ -23,3 +23,32 @@
     
     Go back to your backend terminal after frontend setup(ensure the virtual environment is active) and start the Python API:
    # uvicorn app.main:app --reload
+
+2.frontend
+
+  Open a new terminal panel in VS Code, navigate back to the root case_study folder, and create the frontend:
+   # npm create vite@latest frontend -- --template react-ts
+
+  When prompted by the Vite setup menu:
+
+  Select ESLint as your linter.
+
+  Select Yes for "Install with npm and start now?".
+
+  Open the provided local link (typically http://localhost:5173/) in your browser to verify the frontend server is running.
+
+  # cd frontend
+
+  then install necessary packages
+  # npm i
+
+  then run application via: 
+  # npm run dev 
+
+Test your application by uploading the provided CSV file and checking if the UI correctly displays the performance metrics. A simple, clean UI is perfectly acceptable.
+
+3. github 
+pushed changes to branch
+# git add .
+# git commit -m "setup Changes"
+# git push --set-upstream origin Customer-Invoice_AI_agent
