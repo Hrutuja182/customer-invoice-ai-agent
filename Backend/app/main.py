@@ -1,22 +1,16 @@
+from fastapi import FastAPI, File, HTTPException, UploadFile
 
-from fastapi import FastAPI
-
-app = FastAPI(
-    title="Customer Invoice AI Agent",
-    description="AI-powered customer invoice validation system",
-    version="1.0.0"
-)
+app = FastAPI(title="Invoice Checker API")
 
 
-@app.get("/")
-def home():
-    return {
-        "message": "Customer Invoice AI Agent API is running"
-    }
+@app.get("/api/health")
+def health():
+    return {"status": "ok"}
 
 
-@app.get("/health")
-def health_check():
-    return {
-        "status": "healthy"
-    }
+@app.post("/api/upload")
+async def upload_invoice(file: UploadFile = File(...)):
+    if file.content_type != "application/pdf":
+        raise HTTPException(status_code=400, detail="Only PDF files are accepted")
+    content = await file.read()
+    return {"filename": file.filename, "size_bytes": len(content)}
